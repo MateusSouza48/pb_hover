@@ -6,10 +6,7 @@ from geometry_msgs.msg import Twist
 
 
 
-# ============================================
 # VARIÁVEIS GLOBAIS
-# ============================================
-
 cmd = Twist()
 
 erro = 0.0
@@ -19,10 +16,7 @@ cmd_pub = None
 estado = "PROCURANDO"
 
 
-# ============================================
 # CONSTANTES DE CONTROLE
-# ============================================
-
 ERRO_ALINHADO = 5.0
 ERRO_REALINHAR = 25.0
 VELOCIDADE = 0.25
@@ -41,18 +35,21 @@ def error_callback(msg):
 
     global erro
 
+    # Atualiza o erro horizontal 
     erro = msg.data
 
 def area_callback(msg):
 
     global area
 
+    # Atualiza a área do objeto
     area = msg.data
 
 def found_callback(msg):
-
+    
     global encontrou
 
+    #Atualiza a informação sobre a presença
     encontrou = msg.data
 
 
@@ -136,6 +133,10 @@ def main():
     # Executa o controle a 10 Hz
     rate = rospy.Rate(10)
 
+    # ========================================
+    # LOOP PRINCIPAL
+    # ========================================
+
     while not rospy.is_shutdown():
 
         # ==========================================
@@ -144,6 +145,7 @@ def main():
 
         if estado == "PROCURANDO":
 
+            # Objeto foi encontrado
             if encontrou:
 
                 print("[CONTROL] OBJETO ENCONTRADO!")
@@ -152,6 +154,7 @@ def main():
                 estado = "ALINHANDO"
                 parar()
 
+            # Objeto ainda não foi encontrado
             else:
 
                 procurando()
@@ -163,12 +166,14 @@ def main():
 
         elif estado == "ALINHANDO":
 
+            # Objeeto detectado
             if encontrou:
-
+                # Se o objeto ainda desalinhado, alinha
                 if abs(erro) > ERRO_ALINHADO:
 
                     alinhando()
 
+                # Se não, segue em frente
                 else:
 
                     print("[CONTROL] ALINHADO!")
@@ -177,7 +182,8 @@ def main():
 
                     estado = "SEGUINDO"
                     parar()
-
+                    
+            # Objeto perdido
             else:
 
                 print("[CONTROL] OBJETO PERDIDO!")
