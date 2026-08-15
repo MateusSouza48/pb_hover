@@ -1,0 +1,25 @@
+<launch>
+
+    <arg name="sim" default="true"/>
+
+    <group if="$(eval arg('sim') == true)">
+
+        <include file="$(find pb_hover)/launch/gazebo.launch"/>
+
+    </group>
+
+    <node
+        pkg="pb_hover"
+        type="visao_node.py"
+        name="visao_node"
+        output="screen"
+    />
+
+    <node
+        pkg="pb_hover"
+        type="control_node.py"
+        name="control_node"
+        output="screen"
+    />
+
+</launch>
