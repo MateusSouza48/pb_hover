@@ -32,8 +32,8 @@ def callback(msg):
 
 
     # Mostra as imagens
-    frame = cv2.resize(frame, (0, 0), fx=0.6, fy=0.6)
-    cv2.imshow("Camera", frame)
+    frame_display = cv2.resize(frame, (0, 0), fx=0.6, fy=0.6)
+    cv2.imshow("Camera", frame_display)
 
 
     cv2.waitKey(1)
