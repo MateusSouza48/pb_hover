@@ -39,9 +39,7 @@ def callback(msg):
     cv2.waitKey(1)
 
 
-# ============================================
-# MAIN
-# ============================================
+
 
 def main():
 
@@ -63,9 +61,8 @@ def main():
 
     rospy.spin()
 
-# ============================================
-# DETECTA O OBJETO VERMELHO
-# ============================================
+
+
 
 def detect_red_object(frame):
 
@@ -95,9 +92,7 @@ def detect_red_object(frame):
 
     return frame, mask, encontrou, erro, area
 
-# ============================================
-# PROCURA O MAIOR OBJETO VERMELHO
-# ============================================
+
 
 def find_object(frame, mask):
 

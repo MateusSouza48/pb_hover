@@ -24,13 +24,6 @@ ROTACAO_PROCURANDO = 0.5
 AREA_PARADA = 35000
 GANHO_DIRECAO = 0.002
 
-
-# ============================================
-# CALLBACKS
-#
-# Atualizam as informações recebidas
-# do vision_node através dos tópicos ROS.
-# ============================================
 def error_callback(msg):
 
     global erro
@@ -38,12 +31,14 @@ def error_callback(msg):
     # Atualiza o erro horizontal 
     erro = msg.data
 
+
 def area_callback(msg):
 
     global area
 
     # Atualiza a área do objeto
     area = msg.data
+
 
 def found_callback(msg):
     
@@ -53,10 +48,6 @@ def found_callback(msg):
     encontrou = msg.data
 
 
-# ============================================
-# ESTADO: PROCURANDO
-# ============================================
-
 def procurando():
 
     cmd.linear.x = 0.0
@@ -65,9 +56,6 @@ def procurando():
 
     cmd_pub.publish(cmd)
 
-# ============================================
-# ESTADO: SEGUINDO
-# ============================================
 
 def seguindo():
 
@@ -78,9 +66,6 @@ def seguindo():
     cmd_pub.publish(cmd)
 
 
-# ============================================
-# ESTADO: ALINHANDO
-# ============================================ 
 
 def alinhando():
 
@@ -97,9 +82,7 @@ def alinhando():
 
     cmd_pub.publish(cmd)
 
-# ============================================
-# ESTADO: PARADO
-# ============================================
+
 
 def parar():
 
@@ -110,9 +93,7 @@ def parar():
     cmd_pub.publish(cmd)
 
 
-# ============================================
-# MAIN
-# ============================================
+
 
 def main():
     
@@ -182,7 +163,7 @@ def main():
 
                     estado = "SEGUINDO"
                     parar()
-                    
+
             # Objeto perdido
             else:
 
@@ -257,10 +238,7 @@ def main():
 
         rate.sleep()
 
-
-# ============================================
-# INÍCIO DO PROGRAMA
-# ============================================    
+ 
 
 if __name__ == "__main__":
 
