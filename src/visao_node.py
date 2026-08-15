@@ -16,13 +16,6 @@ erro_pub = None
 found_pub = None
 area_pub = None
 
-# ============================================
-# CALLBACK
-#
-# Essa função é chamada toda vez que uma
-# imagem chega pelo tópico da câmera.
-# ============================================
-
 def callback(msg):
 
     # Converte a imagem do ROS para OpenCV
