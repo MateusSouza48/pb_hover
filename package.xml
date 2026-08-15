@@ -1,35 +1,41 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>pb_hover</name>
+  <version>0.0.0</version>
   <description>
-  Simulação de hovercraft e seguimento autônomo de objeto vermelho
-  utilizando ROS, Gazebo e OpenCV.
+  Simulação de hovercraft e seguimento autônomo de objeto vermelho utilizando ROS, Gazebo e OpenCV.
   </description>
 
-  <maintainer email="seu_email">Mateus Souza</maintainer>
-
+  <maintainer email="mateuspsouzavga@gmail.com">Mateus Souza</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>rospy</depend>
-  <depend>sensor_msgs</depend>
-  <depend>cv_bridge</depend>
-  <depend>std_msgs</depend>
+
   <build_depend>geometry_msgs</build_depend>
   <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>std_srvs</build_depend>
+  <build_depend>cv_bridge</build_depend>
+
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
   <build_export_depend>std_srvs</build_export_depend>
+  <build_export_depend>cv_bridge</build_export_depend>
+
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>rospy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>std_srvs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
 
 
+  <!-- The export tag contains other, unspecified, tags -->
   <export>
+    <!-- Other tools can request additional information be placed here -->
 
   </export>
 </package>
